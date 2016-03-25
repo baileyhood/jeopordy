@@ -28,10 +28,21 @@ angular
 
   apiService.getAllCategories()
     .then(function(data){
-      window.glob = data[0].data;
       $scope.categories = data;
+      // console.log(data);
+      $scope.questions = getQuestions(data);
+      window.glob = $scope.questions;
     });
-});
+
+  function getQuestions (data) {
+    var dataArr = [];
+    for (var i = 0; i < 6; i++) {
+     dataArr.push(data[1].data.clues[Math.floor(Math.random()*data.length)]);
+    }
+    return dataArr;
+  }
+
+});//end of controller
 
 },{}],3:[function(require,module,exports){
 
@@ -31669,7 +31680,6 @@ module.exports = angular;
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
-    // var url ='http://jservice.io/api';
     var StupidAnswers = 'http://jservice.io/api/category?id=136';
     var ThreeLetterWords = 'http://jservice.io/api/category?id=105';
     var Sports = 'http://jservice.io/api/category?id=42';

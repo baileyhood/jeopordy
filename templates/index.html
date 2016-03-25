@@ -4,5 +4,9 @@
     <div  class="category-container col-md-2" ng-repeat = 'category in categories'>
       {{category.data.title}}
     </div>
-  <div>
-</div>
+    <div class="" ng-repeat="question in questions track by $index">
+    <p>
+      {{question.value}}
+    </p>
+    </div>
+  </div>

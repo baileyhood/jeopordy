@@ -2,7 +2,6 @@
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
-    // var url ='http://jservice.io/api';
     var StupidAnswers = 'http://jservice.io/api/category?id=136';
     var ThreeLetterWords = 'http://jservice.io/api/category?id=105';
     var Sports = 'http://jservice.io/api/category?id=42';
