@@ -1,4 +1,9 @@
-
-  <div class="">
-    <a href="/#/question"><p>{{ question.value }}</p></a>
+  <div class="question-container" >
+    <a href="/#/question">
+      <button type="button" ng-model ='question' name="button" ng-click="displayChosenQuestion(question); getAnswer(question)">
+        <p>{{ question.value }}</p>
+        <p>{{ question.question }}</p>
+      </button>
+    </a>
   </div>
+  

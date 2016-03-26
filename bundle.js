@@ -27,7 +27,6 @@ angular
 .module ('jeapordy')
 .controller('HomeController', function ($scope, apiService, CacheEngine){
 
-
 if (CacheEngine.get('currentQuestions')) {
   var cache = CacheEngine.get('currentQuestions');
   $scope.categories = cache;
@@ -38,7 +37,6 @@ else {
       CacheEngine.put('currentQuestions',data);
       $scope.categories = data;
     });
-
 }
 
 });//end of controller
@@ -47,19 +45,33 @@ else {
 angular
 .module ('jeapordy')
 .controller('QuestionController', function ($scope, apiService){
+
+  $scope.displayChosenQuestion = function (question) {
+    window.glob = question.question;
+    $scope.chosenQuestion = question.question;
+    console.log("$scope = ", $scope.chosenQuestion);
+  };
+  $scope.getAnswer = function (question) {
+    window.glob = question.answer;
+    $scope.rightAnswer = question.answer;
+    console.log("right answer = ", $scope.rightAnswer);
+  };
 });
 
 },{}],4:[function(require,module,exports){
 angular
   .module('jeapordy')
   .directive('jeopardyReader', function(){
+
     return {
       templateUrl: '../templates/jeopardy-reader.html',
+      controller: 'QuestionController',
       restrict: 'E',
       scope: {
         question: '='
       }
     };
+
   });
 
 },{}],5:[function(require,module,exports){
