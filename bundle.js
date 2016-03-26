@@ -9,33 +9,45 @@ angular
       .when('/',{
         templateUrl: "templates/index.html",
         controller: "HomeController"
+      })
+      .when('/question',{
+        templateUrl: "templates/question.html",
+        controller: "QuestionController"
       });
-      // .when('/question',{
-      //   templateUrl: "templates/question.html",
-      //   controller: "QuestionController"
-      // });
 });
 
 require('./controllers/homeController.js');
 require('./controllers/questionController.js');
-require('./directives/category-directive.js');
+require('./directives/directive.js');
 require('./services/apiservice.js');
+require('./services/cacheEngine.service.js');
 
-},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/category-directive.js":4,"./services/apiservice.js":9,"angular":8,"angular-route":6}],2:[function(require,module,exports){
+},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./services/apiservice.js":9,"./services/cacheEngine.service.js":10,"angular":8,"angular-route":6}],2:[function(require,module,exports){
 angular
 .module ('jeapordy')
-.controller('HomeController', function ($scope, apiService){
+.controller('HomeController', function ($scope, apiService, CacheEngine){
 
+
+if (CacheEngine.get('currentQuestions')) {
+  var cache = CacheEngine.get('currentQuestions');
+  $scope.categories = cache;
+}
+else {
   apiService.sixCat()
     .then(function(data){
+      CacheEngine.put('currentQuestions',data);
       $scope.categories = data;
-      window.glob = $scope.categories;
     });
 
+}
 
 });//end of controller
 
 },{}],3:[function(require,module,exports){
+angular
+.module ('jeapordy')
+.controller('QuestionController', function ($scope, apiService){
+});
 
 },{}],4:[function(require,module,exports){
 angular
@@ -31664,21 +31676,11 @@ require('./angular');
 module.exports = angular;
 
 },{"./angular":7}],9:[function(require,module,exports){
-
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
 
     var url = 'http://jservice.io/api/category?id=';
-    var StupidAnswers = 'http://jservice.io/api/category?id=136';
-    var ThreeLetterWords = 'http://jservice.io/api/category?id=105';
-    var Sports = 'http://jservice.io/api/category?id=42';
-    var Food = 'http://jservice.io/api/category?id=49';
-    var MusicalInstruments = 'http://jservice.io/api/category?id=184';
-    var Movies = 'http://jservice.io/api/category?id=309';
-    // var cors = 'https://free-cors-server.herokuapp.com/any-request/';
-
-    var categories = [StupidAnswers, ThreeLetterWords, Sports, Food, MusicalInstruments, Movies];
 
     function getAllCategories() {
       var defer = $q.defer();
@@ -31693,11 +31695,53 @@ angular
     return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
   }
 
-
    return {
      getAllCategories : getAllCategories,
      sixCat: sixCat
    };
   });
+
+
+// angular
+//   .module('jeapordy')
+//   .service('apiService', function($http, $q, $cacheFactory) {
+//
+//     var url = 'http://jservice.io/api/category?id=';
+//     var cacheEngine = $cacheFactory ('jeapordy');
+//
+//     function getAllCategories() {
+//       var defer = $q.defer();
+//       var cache = cacheEngine.get('categories');
+//         if(cache) {
+//           defer.resolve(cache);
+//           window.glob = cache;
+//         }
+//         else {
+//         var randomNumber = Math.floor(Math.random() * 1200);
+//         $http.get(url + randomNumber).then(function(data) {
+//         cacheEngine.put('categories', data);
+//         defer.resolve(data);
+//         });
+//       }
+//       return defer.promise;
+//
+//     }
+//
+//     function sixCat() {
+//       return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
+//     }
+//
+//    return {
+//      getAllCategories : getAllCategories,
+//      sixCat: sixCat
+//    };
+//   });
+
+},{}],10:[function(require,module,exports){
+angular
+  .module('jeapordy')
+  .service('CacheEngine',function($cacheFactory) {
+    return $cacheFactory('jeopardyAPI');
+});
 
 },{}]},{},[1]);

@@ -8,14 +8,15 @@ angular
       .when('/',{
         templateUrl: "templates/index.html",
         controller: "HomeController"
+      })
+      .when('/question',{
+        templateUrl: "templates/question.html",
+        controller: "QuestionController"
       });
-      // .when('/question',{
-      //   templateUrl: "templates/question.html",
-      //   controller: "QuestionController"
-      // });
 });
 
 require('./controllers/homeController.js');
 require('./controllers/questionController.js');
-require('./directives/category-directive.js');
+require('./directives/directive.js');
 require('./services/apiservice.js');
+require('./services/cacheEngine.service.js');
