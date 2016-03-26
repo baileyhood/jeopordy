@@ -12,7 +12,7 @@ angular
       })
       .when('/question',{
         templateUrl: "templates/question.html",
-        controller: "QuestionController"
+        controller: "HomeController"
       });
 });
 
@@ -38,7 +38,11 @@ else {
       $scope.categories = data;
     });
 }
-
+$scope.displayChosenQuestion = function (question) {
+  window.glob = question;
+  $scope.chosenQuestion = question;
+  console.log("$scope = ", $scope.chosenQuestion);
+};
 });//end of controller
 
 },{}],3:[function(require,module,exports){
@@ -46,11 +50,7 @@ angular
 .module ('jeapordy')
 .controller('QuestionController', function ($scope, apiService){
 
-  $scope.displayChosenQuestion = function (question) {
-    window.glob = question.question;
-    $scope.chosenQuestion = question.question;
-    console.log("$scope = ", $scope.chosenQuestion);
-  };
+
   $scope.getAnswer = function (question) {
     window.glob = question.answer;
     $scope.rightAnswer = question.answer;
@@ -65,10 +65,11 @@ angular
 
     return {
       templateUrl: '../templates/jeopardy-reader.html',
-      controller: 'QuestionController',
+      controller: 'HomeController',
       restrict: 'E',
       scope: {
-        question: '='
+        question: '=',
+        func: '&'
       }
     };
 

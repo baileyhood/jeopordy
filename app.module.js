@@ -11,7 +11,7 @@ angular
       })
       .when('/question',{
         templateUrl: "templates/question.html",
-        controller: "QuestionController"
+        controller: "HomeController"
       });
 });
 

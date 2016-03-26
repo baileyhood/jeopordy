@@ -13,5 +13,9 @@ else {
       $scope.categories = data;
     });
 }
-
+$scope.displayChosenQuestion = function (question) {
+  window.glob = question;
+  $scope.chosenQuestion = question;
+  console.log("$scope = ", $scope.chosenQuestion);
+};
 });//end of controller

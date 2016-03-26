@@ -4,10 +4,11 @@ angular
 
     return {
       templateUrl: '../templates/jeopardy-reader.html',
-      controller: 'QuestionController',
+      controller: 'HomeController',
       restrict: 'E',
       scope: {
-        question: '='
+        question: '=',
+        func: '&'
       }
     };
 

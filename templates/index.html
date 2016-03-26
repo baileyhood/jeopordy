@@ -2,10 +2,10 @@
   <div class="row">
     <div  class="category-container col-md-2" ng-repeat = 'category in categories track by $index'>
       <h4>{{category.data.title}}</h4>
-      <jeopardy-reader question=category.data.clues[0]></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[1]></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[2]></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[3]></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[4]></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[0] func="displayChosenQuestion(question)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[1] func="displayChosenQuestion(question)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[2] func="displayChosenQuestion(question)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[3] func="displayChosenQuestion(question)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[4] func="displayChosenQuestion(question)"></jeopardy-reader>
     </div>
   </div>
