@@ -26,21 +26,12 @@ angular
 .module ('jeapordy')
 .controller('HomeController', function ($scope, apiService){
 
-  apiService.getAllCategories()
+  apiService.sixCat()
     .then(function(data){
       $scope.categories = data;
-      // console.log(data);
-      $scope.questions = getQuestions(data);
-      window.glob = $scope.questions;
+      window.glob = $scope.categories;
     });
 
-  function getQuestions (data) {
-    var dataArr = [];
-    for (var i = 0; i < 6; i++) {
-     dataArr.push(data[1].data.clues[Math.floor(Math.random()*data.length)]);
-    }
-    return dataArr;
-  }
 
 });//end of controller
 
@@ -49,16 +40,13 @@ angular
 },{}],4:[function(require,module,exports){
 angular
   .module('jeapordy')
-  .directive('categoryGetter', function () {
+  .directive('jeopardyReader', function(){
     return {
-      templateUrl: '../templates/category.html',
+      templateUrl: '../templates/jeopardy-reader.html',
       restrict: 'E',
       scope: {
-        categoryId: '@',
-        categoryCount: '@',
-        categoryTitle: '@',
-        getFunc: '&'
-      },
+        question: '='
+      }
     };
   });
 
@@ -31680,6 +31668,8 @@ module.exports = angular;
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
+
+    var url = 'http://jservice.io/api/category?id=';
     var StupidAnswers = 'http://jservice.io/api/category?id=136';
     var ThreeLetterWords = 'http://jservice.io/api/category?id=105';
     var Sports = 'http://jservice.io/api/category?id=42';
@@ -31691,16 +31681,22 @@ angular
     var categories = [StupidAnswers, ThreeLetterWords, Sports, Food, MusicalInstruments, Movies];
 
     function getAllCategories() {
-    categoryLinks = [];
-    categories.forEach(function(el){
-      categoryLink = $http.get(el);
-      categoryLinks.push(categoryLink);
-    });
-      return $q.all(categoryLinks);
+      var defer = $q.defer();
+      var randomNumber = Math.floor(Math.random() * 1200);
+      $http.get(url + randomNumber).then(function(data) {
+        defer.resolve(data);
+      });
+      return defer.promise;
     }
 
+    function sixCat() {
+    return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
+  }
+
+
    return {
-     getAllCategories : getAllCategories
+     getAllCategories : getAllCategories,
+     sixCat: sixCat
    };
   });
 

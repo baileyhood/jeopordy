@@ -1,14 +1,11 @@
 angular
   .module('jeapordy')
-  .directive('categoryGetter', function () {
+  .directive('jeopardyReader', function(){
     return {
-      templateUrl: '../templates/category.html',
+      templateUrl: '../templates/jeopardy-reader.html',
       restrict: 'E',
       scope: {
-        categoryId: '@',
-        categoryCount: '@',
-        categoryTitle: '@',
-        getFunc: '&'
-      },
+        question: '='
+      }
     };
   });

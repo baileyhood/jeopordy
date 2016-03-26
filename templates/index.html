@@ -2,11 +2,11 @@
   <h1>Categories</h1>
   <div class="row">
     <div  class="category-container col-md-2" ng-repeat = 'category in categories'>
-      {{category.data.title}}
-    </div>
-    <div class="" ng-repeat="question in questions track by $index">
-    <p>
-      {{question.value}}
-    </p>
+      <h4>{{category.data.title}}</h2>
+      <jeopardy-reader question=category.data.clues[0]></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[1]></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[2]></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[3]></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[4]></jeopardy-reader>
     </div>
   </div>

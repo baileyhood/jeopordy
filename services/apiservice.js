@@ -2,6 +2,8 @@
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
+
+    var url = 'http://jservice.io/api/category?id=';
     var StupidAnswers = 'http://jservice.io/api/category?id=136';
     var ThreeLetterWords = 'http://jservice.io/api/category?id=105';
     var Sports = 'http://jservice.io/api/category?id=42';
@@ -13,15 +15,21 @@ angular
     var categories = [StupidAnswers, ThreeLetterWords, Sports, Food, MusicalInstruments, Movies];
 
     function getAllCategories() {
-    categoryLinks = [];
-    categories.forEach(function(el){
-      categoryLink = $http.get(el);
-      categoryLinks.push(categoryLink);
-    });
-      return $q.all(categoryLinks);
+      var defer = $q.defer();
+      var randomNumber = Math.floor(Math.random() * 1200);
+      $http.get(url + randomNumber).then(function(data) {
+        defer.resolve(data);
+      });
+      return defer.promise;
     }
 
+    function sixCat() {
+    return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
+  }
+
+
    return {
-     getAllCategories : getAllCategories
+     getAllCategories : getAllCategories,
+     sixCat: sixCat
    };
   });
