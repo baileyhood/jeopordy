@@ -11,7 +11,9 @@ angular
         func: '&',
         answer: '=',
         getansw: '&',
-        score: '&'
+        score: '&',
+        value: '=',
+        getvalue: '&'
       }
     };
 

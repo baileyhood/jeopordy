@@ -50,16 +50,25 @@ $scope.getAnswer = function (answer) {
   $scope.rightAnswer = answer;
 };
 
+$scope.getValue = function (value) {
+  $scope.rightValue = value;
+  console.log("value, ", $scope.rightValue);
+};
+
+$scope.addPoints = function (points) {
+  $scope.playerStats += points;
+};
+
 $scope.checkAnswer = function (answerInput) {
 
   if ($scope.rightAnswer.toLowerCase() === answerInput.toLowerCase()) {
     console.log("right answer!");
-    $scope.score = '';
-    $scope.score = 3;
+    $scope.playerStats = 0;
+    $scope.addPoints($scope.rightValue);
     console.log('THIS ', $scope.categories);
   }
   else {
-    console.log("wrong!");
+      $scope.addPoints(-$scope.rightValue);
   }
 };
 
@@ -96,7 +105,9 @@ angular
         func: '&',
         answer: '=',
         getansw: '&',
-        score: '&'
+        score: '&',
+        value: '=',
+        getvalue: '&'
       }
     };
 
