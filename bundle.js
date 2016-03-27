@@ -56,20 +56,42 @@ $scope.getValue = function (value) {
 };
 
 $scope.addPoints = function (points) {
-  $scope.playerStats += points;
+  $scope.player.score += points;
+};
+
+$scope.player = {
+  score: 0
 };
 
 $scope.checkAnswer = function (answerInput) {
 
   if ($scope.rightAnswer.toLowerCase() === answerInput.toLowerCase()) {
     console.log("right answer!");
-    $scope.playerStats = 0;
     $scope.addPoints($scope.rightValue);
-    console.log('THIS ', $scope.categories);
+    $scope.showMe();
   }
   else {
+      console.log("wrong answer!");
       $scope.addPoints(-$scope.rightValue);
+      $scope.showWrong();
   }
+};
+
+$scope.showMe = function(){
+  $scope.show=true;
+};
+
+$scope.showWrong = function () {
+  $scope.showwrong=true;
+};
+
+$scope.hide = function () {
+  $scope.show=false;
+  $scope.showwrong=false;
+};
+
+$scope.clear = function () {
+  $scope.answerinput = '';
 };
 
 });//end of controller
