@@ -2,6 +2,8 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
 
+
+
 angular
   .module('jeapordy',['ngRoute'])
   .config(function($routeProvider) {
@@ -9,11 +11,11 @@ angular
       .when('/',{
         templateUrl: "templates/index.html",
         controller: "HomeController"
-      })
-      .when('/question',{
-        templateUrl: "templates/question.html",
-        controller: "HomeController"
       });
+      // .when('/question',{
+      //   templateUrl: "templates/question.html",
+      //   controller: "HomeController"
+      // });
 });
 
 require('./controllers/homeController.js');
@@ -38,11 +40,27 @@ else {
       $scope.categories = data;
     });
 }
+
 $scope.displayChosenQuestion = function (question) {
-  window.glob = question;
+  console.log('question', question);
   $scope.chosenQuestion = question;
   console.log("$scope = ", $scope.chosenQuestion);
 };
+
+$scope.getAnswer = function (answer) {
+  window.glob = answer;
+  console.log(answer);
+  $scope.rightAnswer = answer;
+  console.log("right answer = ", $scope.rightAnswer);
+};
+
+// $scope.checkAnswer = function (answerInput) {
+//   if ($scope.rightAnswer === answerInput) {
+//     console.log ('right!');
+//   }
+//   console.log("working??");
+// };
+
 });//end of controller
 
 },{}],3:[function(require,module,exports){
@@ -50,7 +68,11 @@ angular
 .module ('jeapordy')
 .controller('QuestionController', function ($scope, apiService){
 
-
+  $scope.displayChosenQuestion = function (question) {
+    console.log('question', question);
+    $scope.chosenQuestion = question;
+    console.log("$scope = ", $scope.chosenQuestion);
+  };
   $scope.getAnswer = function (question) {
     window.glob = question.answer;
     $scope.rightAnswer = question.answer;
@@ -69,7 +91,9 @@ angular
       restrict: 'E',
       scope: {
         question: '=',
-        func: '&'
+        func: '&',
+        answer: '=',
+        getansw: '&'
       }
     };
 

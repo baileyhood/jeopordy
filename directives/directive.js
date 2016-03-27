@@ -8,7 +8,9 @@ angular
       restrict: 'E',
       scope: {
         question: '=',
-        func: '&'
+        func: '&',
+        answer: '=',
+        getansw: '&'
       }
     };
 

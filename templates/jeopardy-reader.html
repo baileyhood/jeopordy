@@ -1,8 +1,7 @@
   <div class="question-container" >
-    <a href="/#/question">
-      <button type="button" ng-model ='question' name="button" ng-click="func(question)">
+
+      <button type="button"  data-toggle="modal" data-target="#myModal" ng-model ='question' name="button" ng-click="func(question); getansw(answer)">  <!-- why does this work?? -->
         <p>{{ question.value }}</p>
-        <p>{{ question.question }}</p>
+        <p>{{ answ }}</p>
       </button>
-    </a>
   </div>

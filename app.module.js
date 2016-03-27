@@ -1,6 +1,8 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
 
+
+
 angular
   .module('jeapordy',['ngRoute'])
   .config(function($routeProvider) {
@@ -8,11 +10,11 @@ angular
       .when('/',{
         templateUrl: "templates/index.html",
         controller: "HomeController"
-      })
-      .when('/question',{
-        templateUrl: "templates/question.html",
-        controller: "HomeController"
       });
+      // .when('/question',{
+      //   templateUrl: "templates/question.html",
+      //   controller: "HomeController"
+      // });
 });
 
 require('./controllers/homeController.js');

@@ -13,9 +13,25 @@ else {
       $scope.categories = data;
     });
 }
+
 $scope.displayChosenQuestion = function (question) {
-  window.glob = question;
+  console.log('question', question);
   $scope.chosenQuestion = question;
   console.log("$scope = ", $scope.chosenQuestion);
 };
+
+$scope.getAnswer = function (answer) {
+  window.glob = answer;
+  console.log(answer);
+  $scope.rightAnswer = answer;
+  console.log("right answer = ", $scope.rightAnswer);
+};
+
+// $scope.checkAnswer = function (answerInput) {
+//   if ($scope.rightAnswer === answerInput) {
+//     console.log ('right!');
+//   }
+//   console.log("working??");
+// };
+
 });//end of controller
