@@ -3,10 +3,10 @@
     <div  class="category-container col-md-2" ng-repeat = 'category in categories track by $index'>
       <h4>{{category.data.title}}</h4>
       <jeopardy-reader question=category.data.clues[0] func="displayChosenQuestion(question)" answer=category.data.clues[0] getansw="getAnswer(answer)"> </jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[1] func="displayChosenQuestion(question)" answer="category.data.clues[1].answer"></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[2] func="displayChosenQuestion(question)" answ="category.data.clues[2].answer"></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[3] func="displayChosenQuestion(question)" answer="category.data.clues[3].answer"></jeopardy-reader>
-      <jeopardy-reader question=category.data.clues[4] func="displayChosenQuestion(question)" answer="category.data.clues[4].answer"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[1] func="displayChosenQuestion(question)" answer="category.data.clues[1]" getansw="getAnswer(answer)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[2] func="displayChosenQuestion(question)" answ="category.data.clues[2]" getansw="getAnswer(answer)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[3] func="displayChosenQuestion(question)" answer="category.data.clues[3]" getansw="getAnswer(answer)"></jeopardy-reader>
+      <jeopardy-reader question=category.data.clues[4] func="displayChosenQuestion(question)" answer="category.data.clues[4]" getansw="getAnswer(answer)"></jeopardy-reader>
     </div>
   </div>
 
@@ -20,11 +20,12 @@
         </div>
         <div class="modal-body">
           <input type="text" name="name" ng-model="answerinput" placeholder = "Enter answer" value="">
-          <button type="submit" name="button" ng-submit="checkAnswer(answerinput)">SUBMIT</button>
+          <button type="button" name="button" ng-click="checkAnswer(answerinput)">SUBMIT</button>
+          <h4>Score={{score}}</h4>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button"  class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

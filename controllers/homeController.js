@@ -15,23 +15,25 @@ else {
 }
 
 $scope.displayChosenQuestion = function (question) {
-  console.log('question', question);
   $scope.chosenQuestion = question;
-  console.log("$scope = ", $scope.chosenQuestion);
 };
 
 $scope.getAnswer = function (answer) {
   window.glob = answer;
-  console.log(answer);
   $scope.rightAnswer = answer;
-  console.log("right answer = ", $scope.rightAnswer);
 };
 
-// $scope.checkAnswer = function (answerInput) {
-//   if ($scope.rightAnswer === answerInput) {
-//     console.log ('right!');
-//   }
-//   console.log("working??");
-// };
+$scope.checkAnswer = function (answerInput) {
+
+  if ($scope.rightAnswer.toLowerCase() === answerInput.toLowerCase()) {
+    console.log("right answer!");
+    $scope.score = '';
+    $scope.score = 3;
+    console.log('THIS ', $scope.categories);
+  }
+  else {
+    console.log("wrong!");
+  }
+};
 
 });//end of controller

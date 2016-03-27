@@ -10,7 +10,8 @@ angular
         question: '=',
         func: '&',
         answer: '=',
-        getansw: '&'
+        getansw: '&',
+        score: '&'
       }
     };
 
