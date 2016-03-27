@@ -1,8 +1,7 @@
-  <h1>Categories</h1>
-  <h4>Score={{player.score}}</h4>
-  <div class="row">
+  <h4 id= 'scoreboard'>{{player.score}}</h4>
+  <div class="row list-container">
     <div  class="category-container col-md-2" ng-repeat = 'category in categories track by $index'>
-      <h4>{{category.data.title}}</h4>
+      <h4 id="category-text">{{category.data.title}}</h4>
       <jeopardy-reader question=category.data.clues[0] func="displayChosenQuestion(question)" getansw="getAnswer(answer)" getvalue="getValue(value)"> </jeopardy-reader>
       <jeopardy-reader question=category.data.clues[1] func="displayChosenQuestion(question)"  getansw="getAnswer(answer)" getvalue="getValue(value)"></jeopardy-reader>
       <jeopardy-reader question=category.data.clues[2] func="displayChosenQuestion(question)" getansw="getAnswer(answer)" getvalue="getValue(value)"></jeopardy-reader>
