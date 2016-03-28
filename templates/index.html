@@ -2,7 +2,7 @@
   <h4 id= 'scoreboard'><span id="score-text">score</span>{{player.score}}</h4>
   <div class="line"></div>
   <div class="row list-container">
-    <div  class="category-container col-md-2" ng-repeat = 'category in categories track by $index'>
+    <div  class="category-container col-md-2" ng-repeat = 'category in categories'>
       <h4 id="category-text">{{category.data.title}}</h4>
       <jeopardy-reader question=category.data.clues[0] func="displayChosenQuestion(question)" getansw="getAnswer(answer)" getvalue="getValue(value)"> </jeopardy-reader>
       <jeopardy-reader question=category.data.clues[1] func="displayChosenQuestion(question)"  getansw="getAnswer(answer)" getvalue="getValue(value)"></jeopardy-reader>
