@@ -17,7 +17,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" ng-click="clear(); hide()"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button"  class="close" ng-click="clear(); hide()"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">{{ chosenQuestion }}
         </div>
         <div class="modal-body">
@@ -28,7 +28,6 @@
           </p>
           <p ng-show = "showwrong" class= 'popup'>
             Wrong! The answer is <span class = 'right-answer'>{{rightAnswer}}</span>
-
           </p>
         </div>
       </div>

@@ -1,15 +1,16 @@
 body {
-  background-color: #A1B0A7;
+  background-color: white;
 }
 h1 {
   font-family: 'Lora', sans-serif;
   color: #493C23;
   text-align: center;
   font-size: 4em;
-  background-color: #D4B647;
+  background-color: #DBD9D4;
   margin: 0 -15px;
   padding: 15px 0;
   text-transform: uppercase;
+  border-bottom: 1px solid #69634E;
 }
 
 .longer-line {
@@ -25,33 +26,35 @@ h1 {
   text-align: center;
 }
 #category-text {
-  background-color: #E5E9DA;
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
   font-size: 1em;
   padding: 10px 0;
-  border: 3px solid #D4B647;
+  border: 1px solid #f5883b;
   border-radius: 6px;
+  color: #f5883b;
 }
 
 .get-question-button {
   border: none;
-  background-color: #E5E9DA;
+  background-color: #F7F7F7;
   font-family: 'Lora', serif;
   width: 131px;
-  height: 63px;
-  font-size: 2.6em;
+  height: 52px;
+  font-size: 2.3em;
   margin-bottom: 10px;
-  border: 3px solid #D4B647;
   border-radius: 6px;
+  color: #69634E;
+  border: 1px solid lightgrey;
 
 }
 .list-container {
-  background-color: #69634E;
+  background-color: white;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.31);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.31);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.31);
+  border: 1px solid #69634E;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
   max-width: 970px;
 }
 #scoreboard {
@@ -67,7 +70,7 @@ h1 {
   font-family: 'lora';
   text-transform: uppercase;
   font-size: 18px;
-  color: #868048;
+  color: #f5883b;
 }
 
 .line {
@@ -81,7 +84,7 @@ h1 {
 }
 
 .modal-content {
-  background-color: #E5E9DA
+  background-color: white
 }
 
 .modal-title {
@@ -104,6 +107,7 @@ h1 {
   font-style: italic;
   margin: 0 auto;
   display: block;
+  color: #f5883b
 }
 .modal-header {
   border-bottom: 1px solid #69634E;
@@ -111,9 +115,12 @@ h1 {
 .popup {
   font-family: 'Lora', serif;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 .right-answer
 {
   font-style: italic;
+}
+.strike-through{
+  text-decoration: line-through;
 }
