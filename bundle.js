@@ -2,29 +2,21 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
 
-
-
 angular
-  .module('jeapordy',['ngRoute'])
+  .module('gametime',[
+    'ngRoute',
+    'jeapordy'
+])
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        templateUrl: "templates/index.html",
-        controller: "HomeController"
+        templateUrl: "main.html",
       });
-      // .when('/question',{
-      //   templateUrl: "templates/question.html",
-      //   controller: "HomeController"
-      // });
 });
 
-require('./controllers/homeController.js');
-require('./controllers/questionController.js');
-require('./directives/directive.js');
-require('./services/apiservice.js');
-require('./services/cacheEngine.service.js');
+require ('./jeopardyApp');
 
-},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./services/apiservice.js":9,"./services/cacheEngine.service.js":10,"angular":8,"angular-route":6}],2:[function(require,module,exports){
+},{"./jeopardyApp":5,"angular":12,"angular-route":10}],2:[function(require,module,exports){
 angular
 .module ('jeapordy')
 .controller('HomeController', function ($scope, apiService, CacheEngine){
@@ -119,7 +111,7 @@ angular
   .directive('jeopardyReader', function(){
 
     return {
-      templateUrl: '../templates/jeopardy-reader.html',
+      templateUrl: '../../jeopardyApp/templates/jeopardy-reader.html',
       controller: 'HomeController',
       restrict: 'E',
       scope: {
@@ -136,6 +128,67 @@ angular
   });
 
 },{}],5:[function(require,module,exports){
+require('./jeopardy.module.js');
+require('./controllers/homeController.js');
+require('./controllers/questionController.js');
+require('./directives/directive.js');
+require('./services/apiservice.js');
+require('./services/cacheEngine.service.js');
+
+},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./jeopardy.module.js":6,"./services/apiservice.js":7,"./services/cacheEngine.service.js":8}],6:[function(require,module,exports){
+var angular = require('angular');
+var angularRoute = require('angular-route');
+
+angular
+  .module('jeapordy',['ngRoute'])
+  .config(function($routeProvider) {
+    $routeProvider
+      .when('/jeopardy',{
+        templateUrl: "jeopardyApp/templates/index.html",
+        controller: "HomeController"
+      });
+});
+
+require('./controllers/homeController.js');
+require('./controllers/questionController.js');
+require('./directives/directive.js');
+require('./services/apiservice.js');
+require('./services/cacheEngine.service.js');
+
+},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./services/apiservice.js":7,"./services/cacheEngine.service.js":8,"angular":12,"angular-route":10}],7:[function(require,module,exports){
+angular
+  .module('jeapordy')
+  .service('apiService', function($http, $q) {
+
+    var url = 'http://jservice.io/api/category?id=';
+
+    function getAllCategories() {
+      var defer = $q.defer();
+      var randomNumber = Math.floor(Math.random() * 1200);
+      $http.get(url + randomNumber).then(function(data) {
+        defer.resolve(data); //review this
+      });
+      return defer.promise; //review this too
+    }
+
+    function sixCat() {
+    return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
+  }
+
+   return {
+     getAllCategories : getAllCategories,
+     sixCat: sixCat
+   };
+  });
+
+},{}],8:[function(require,module,exports){
+angular
+  .module('jeapordy')
+  .service('CacheEngine',function($cacheFactory) {
+    return $cacheFactory('jeopardyAPI');
+});
+
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -1159,11 +1212,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":5}],7:[function(require,module,exports){
+},{"./angular-route":9}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31744,41 +31797,8 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}],9:[function(require,module,exports){
-angular
-  .module('jeapordy')
-  .service('apiService', function($http, $q) {
-
-    var url = 'http://jservice.io/api/category?id=';
-
-    function getAllCategories() {
-      var defer = $q.defer();
-      var randomNumber = Math.floor(Math.random() * 1200);
-      $http.get(url + randomNumber).then(function(data) {
-        defer.resolve(data); //review this
-      });
-      return defer.promise; //review this too
-    }
-
-    function sixCat() {
-    return $q.all([getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories(),getAllCategories()]);
-  }
-
-   return {
-     getAllCategories : getAllCategories,
-     sixCat: sixCat
-   };
-  });
-
-},{}],10:[function(require,module,exports){
-angular
-  .module('jeapordy')
-  .service('CacheEngine',function($cacheFactory) {
-    return $cacheFactory('jeopardyAPI');
-});
-
-},{}]},{},[1]);
+},{"./angular":11}]},{},[1]);
