@@ -41,7 +41,7 @@ h1 {
   border: none;
   background-color: #F7F7F7;
   font-family: 'Lora', serif;
-  width: 131px;
+  width: 100%;
   height: 52px;
   font-size: 2.3em;
   margin-bottom: 10px;
@@ -62,7 +62,7 @@ h1 {
      text-align: center;
     font-size: 4.3em;
     display: inline-block;
-    min-width: 106px;
+    min-width: 160px;
 
 }
 #score-text {
@@ -80,7 +80,7 @@ h1 {
   display: inline-block;
   height: 1px;
   vertical-align: 30px;
-  width: 43.9%;
+  width: 40.9%;
 }
 
 .modal-content {

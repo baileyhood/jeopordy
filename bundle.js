@@ -82,15 +82,6 @@ angular
         $scope.showWrong = function() {
             $scope.showwrong = true;
         };
-
-        $scope.hide = function() {
-            $scope.show = false;
-            $scope.showwrong = false;
-        };
-
-        $scope.clear = function() {
-            $scope.answerinput = '';
-        };
     });
 
 },{}],5:[function(require,module,exports){
