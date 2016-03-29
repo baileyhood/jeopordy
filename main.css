@@ -34,6 +34,7 @@ h1 {
   padding: 10px 0;
   border: 1px solid #f5883b;
   color: #f5883b;
+  text-align: center;
 }
 
 .get-question-button {

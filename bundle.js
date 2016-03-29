@@ -16,7 +16,7 @@ angular
 
 require ('./jeopardyApp');
 
-},{"./jeopardyApp":5,"angular":12,"angular-route":10}],2:[function(require,module,exports){
+},{"./jeopardyApp":6,"angular":13,"angular-route":11}],2:[function(require,module,exports){
 angular
 .module ('jeapordy')
 .controller('HomeController', function ($scope, apiService, CacheEngine){
@@ -32,59 +32,6 @@ else {
       $scope.categories = data;
     });
 }
-
-$scope.displayChosenQuestion = function (question) {
-  $scope.chosenQuestion = question;
-};
-
-$scope.getAnswer = function (answer) {
-  window.glob = answer;
-  $scope.rightAnswer = answer;
-};
-
-$scope.getValue = function (value) {
-  $scope.rightValue = value;
-  console.log("value, ", $scope.rightValue);
-};
-
-$scope.addPoints = function (points) {
-  $scope.player.score += points;
-};
-
-$scope.player = {
-  score: 0
-};
-
-$scope.checkAnswer = function (answerInput) {
-
-  if ($scope.rightAnswer.toLowerCase() === answerInput.toLowerCase()) {
-    console.log("right answer!");
-    $scope.addPoints($scope.rightValue);
-    $scope.showMe();
-  }
-  else {
-      console.log("wrong answer!");
-      $scope.addPoints(-$scope.rightValue);
-      $scope.showWrong();
-  }
-};
-
-$scope.showMe = function(){
-  $scope.show=true;
-};
-
-$scope.showWrong = function () {
-  $scope.showwrong=true;
-};
-
-$scope.hide = function () {
-  $scope.show=false;
-  $scope.showwrong=false;
-};
-
-$scope.clear = function () {
-  $scope.answerinput = '';
-};
 
 });//end of controller
 
@@ -108,26 +55,66 @@ angular
 },{}],4:[function(require,module,exports){
 angular
   .module('jeapordy')
+  .controller('ReaderController', function($scope, $rootScope) {
+
+    $rootScope.player = {
+      score: 0
+    };
+
+
+  $scope.submitAnswer = function (userInput, actualAnswer, value) {
+    if (userInput === actualAnswer) {
+        $rootScope.player.score += value * 2;
+        console.log("right answer!", $scope.player.score );
+      }
+    else {
+      $rootScope.player.score -= value * 2;
+      console.log("wrong answer!", $scope.player.score);
+    }
+  };
+
+  $scope.isDisabled = false;
+
+  $scope.disableButton = function() {
+        $scope.isDisabled = true;
+    };
+
+$scope.showMe = function(){
+  $scope.show=true;
+};
+
+$scope.showWrong = function () {
+  $scope.showwrong=true;
+};
+
+$scope.hide = function () {
+  $scope.show=false;
+  $scope.showwrong=false;
+};
+
+$scope.clear = function () {
+  $scope.answerinput = '';
+};
+  });
+
+},{}],5:[function(require,module,exports){
+angular
+  .module('jeapordy')
   .directive('jeopardyReader', function(){
 
     return {
       templateUrl: '../../jeopardyApp/templates/jeopardy-reader.html',
-      controller: 'HomeController',
+      controller: 'ReaderController',
       restrict: 'E',
       scope: {
         question: '=',
-        func: '&',
-        answer: '=',
-        getansw: '&',
-        score: '&',
-        value: '=',
-        getvalue: '&'
-      }
+        show: '&'
+      },
     };
 
   });
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 require('./jeopardy.module.js');
 require('./controllers/homeController.js');
 require('./controllers/questionController.js');
@@ -135,7 +122,7 @@ require('./directives/directive.js');
 require('./services/apiservice.js');
 require('./services/cacheEngine.service.js');
 
-},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./jeopardy.module.js":6,"./services/apiservice.js":7,"./services/cacheEngine.service.js":8}],6:[function(require,module,exports){
+},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":5,"./jeopardy.module.js":7,"./services/apiservice.js":8,"./services/cacheEngine.service.js":9}],7:[function(require,module,exports){
 var angular = require('angular');
 var angularRoute = require('angular-route');
 
@@ -150,12 +137,12 @@ angular
 });
 
 require('./controllers/homeController.js');
-require('./controllers/questionController.js');
+require('./controllers/readerController.js');
 require('./directives/directive.js');
 require('./services/apiservice.js');
 require('./services/cacheEngine.service.js');
 
-},{"./controllers/homeController.js":2,"./controllers/questionController.js":3,"./directives/directive.js":4,"./services/apiservice.js":7,"./services/cacheEngine.service.js":8,"angular":12,"angular-route":10}],7:[function(require,module,exports){
+},{"./controllers/homeController.js":2,"./controllers/readerController.js":4,"./directives/directive.js":5,"./services/apiservice.js":8,"./services/cacheEngine.service.js":9,"angular":13,"angular-route":11}],8:[function(require,module,exports){
 angular
   .module('jeapordy')
   .service('apiService', function($http, $q) {
@@ -181,14 +168,14 @@ angular
    };
   });
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 angular
   .module('jeapordy')
   .service('CacheEngine',function($cacheFactory) {
     return $cacheFactory('jeopardyAPI');
 });
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -1212,11 +1199,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":9}],11:[function(require,module,exports){
+},{"./angular-route":10}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31797,8 +31784,8 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":11}]},{},[1]);
+},{"./angular":12}]},{},[1]);

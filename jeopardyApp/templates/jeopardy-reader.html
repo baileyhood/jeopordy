@@ -1,7 +1,31 @@
-  <div class="question-container" >
 
-      <button type="button" class ="get-question-button" ng-class="{strike: deleted}"  data-toggle="modal" data-target="#myModal"  name="button" ng-click="func(question); getansw(question); getvalue(question)">
-        <p>{{ question.value }}</p>
-        <p>{{ answ }}</p>
-      </button>
+  <div class="question-container" >
+         <h4 id="category-text">{{ question.title }}</h4>
+        <div class="" ng-repeat="clue in question.clues | limitTo: 5">
+          <div class="">
+            <button class="get-question-button {{clue.id}}" data-toggle="modal" data-target="#{{clue.id}}">${{clue.value * 2}}</button>
+          </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="{{clue.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button"  class="close" ng-click="clear(); hide()"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ clue.question }}
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" name="name" ng-model="answerinput" placeholder = "Enter answer" value="">
+          <button type="button" ng-disabled="isDisabled"name="button" ng-click="submitAnswer(answerinput, clue.answer, clue.value); disableButton()">SUBMIT</button>
+          <!-- <p ng-show = "show" class='popup'>
+            Correct!
+          </p>
+          <p ng-show = "showwrong" class= 'popup'>
+            Wrong! The answer is <span class = 'right-answer'>{{rightAnswer}}</span>
+          </p> -->
+        </div>
+      </div>
+    </div>
   </div>
+
+</div> <!-- end of 'question-container' -->

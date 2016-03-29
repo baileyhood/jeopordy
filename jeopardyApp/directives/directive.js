@@ -4,17 +4,12 @@ angular
 
     return {
       templateUrl: '../../jeopardyApp/templates/jeopardy-reader.html',
-      controller: 'HomeController',
+      controller: 'ReaderController',
       restrict: 'E',
       scope: {
         question: '=',
-        func: '&',
-        answer: '=',
-        getansw: '&',
-        score: '&',
-        value: '=',
-        getvalue: '&'
-      }
+        show: '&'
+      },
     };
 
   });
