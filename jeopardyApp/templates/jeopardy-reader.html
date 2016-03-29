@@ -1,9 +1,9 @@
 
   <div class="question-container" >
          <h4 id="category-text">{{ question.title }}</h4>
-        <div class="" ng-repeat="clue in question.clues | limitTo: 5">
+        <div class="" ng-repeat="clue in question.clues | limitTo: 5" >
           <div class="">
-            <button class="get-question-button {{clue.id}}" data-toggle="modal" data-target="#{{clue.id}}">${{clue.value * 2}}</button>
+            <button class="get-question-button {{clue.id}}" data-toggle="modal" data-target="#{{clue.id}}" >${{clue.value * 2}}</button>
           </div>
 
   <!-- Modal -->
@@ -16,7 +16,7 @@
         </div>
         <div class="modal-body">
           <input type="text" class="form-control" name="name" ng-model="answerinput" placeholder = "Enter answer" value="">
-          <button type="button" ng-disabled="isDisabled"name="button" ng-click="submitAnswer(answerinput, clue.answer, clue.value); disableButton()">SUBMIT</button>
+          <button type="button" name="button" ng-click="submitAnswer(answerinput, clue.answer, clue.value); disable(clue.id)"; >SUBMIT</button>
           <!-- <p ng-show = "show" class='popup'>
             Correct!
           </p>
