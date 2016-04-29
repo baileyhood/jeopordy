@@ -1,5 +1,5 @@
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .directive('jeopardyReader', function(){
 
     return {

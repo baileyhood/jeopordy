@@ -1,5 +1,5 @@
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .service('CacheEngine',function($cacheFactory) {
     return $cacheFactory('jeopardyAPI');
 });

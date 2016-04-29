@@ -70,7 +70,7 @@ angular
 
 },{}],4:[function(require,module,exports){
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .directive('jeopardyReader', function(){
 
     return {
@@ -114,7 +114,7 @@ require('./services/cacheEngine.service.js');
 
 },{"./controllers/homeController.js":2,"./controllers/readerController.js":3,"./directives/directive.js":4,"./services/apiservice.js":7,"./services/cacheEngine.service.js":8,"angular":12,"angular-route":10}],7:[function(require,module,exports){
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .service('apiService', function($http, $q) {
 
     var url = 'http://jservice.io/api/category?id=';
@@ -140,7 +140,7 @@ angular
 
 },{}],8:[function(require,module,exports){
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .service('CacheEngine',function($cacheFactory) {
     return $cacheFactory('jeopardyAPI');
 });

@@ -1,5 +1,5 @@
 angular
-  .module('jeapordy')
+  .module('jeopardyApp')
   .service('apiService', function($http, $q) {
 
     var url = 'http://jservice.io/api/category?id=';
