@@ -2,7 +2,7 @@ var angular = require('angular');
 var angularRoute = require('angular-route');
 
 angular
-  .module('jeapordy',['ngRoute'])
+  .module('jeopardyApp',['ngRoute'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/jeopardy',{

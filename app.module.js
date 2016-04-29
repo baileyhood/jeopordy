@@ -4,12 +4,12 @@ var angularRoute = require('angular-route');
 angular
   .module('gametime',[
     'ngRoute',
-    'jeapordy'
+    'jeopardyApp'
 ])
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        templateUrl: "jeopordy/jeopardyApp/templates/index.html",
+        templateUrl: "jeopardyApp/templates/index.html",
         controller: 'HomeController'
       });
 });
