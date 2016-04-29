@@ -1,5 +1,5 @@
 angular
-    .module('jeapordy')
+    .module('jeopardyApp')
     .controller('ReaderController', function($scope, $rootScope) {
         $rootScope.score = 0;
         $scope.submitAnswer = function(userInput, actualAnswer, value) {

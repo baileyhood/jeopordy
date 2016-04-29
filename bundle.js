@@ -19,7 +19,7 @@ require ('./jeopardyApp');
 
 },{"./jeopardyApp":5,"angular":12,"angular-route":10}],2:[function(require,module,exports){
 angular
-.module ('jeapordy')
+.module ('jeopardyApp')
 .controller('HomeController', function ($scope, apiService, CacheEngine){
 
 if (CacheEngine.get('currentQuestions')) {
@@ -38,7 +38,7 @@ else {
 
 },{}],3:[function(require,module,exports){
 angular
-    .module('jeapordy')
+    .module('jeopardyApp')
     .controller('ReaderController', function($scope, $rootScope) {
         $rootScope.score = 0;
         $scope.submitAnswer = function(userInput, actualAnswer, value) {

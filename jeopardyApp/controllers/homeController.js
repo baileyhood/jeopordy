@@ -1,5 +1,5 @@
 angular
-.module ('jeapordy')
+.module ('jeopardyApp')
 .controller('HomeController', function ($scope, apiService, CacheEngine){
 
 if (CacheEngine.get('currentQuestions')) {
