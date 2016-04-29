@@ -9,7 +9,7 @@ angular
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        templateUrl: "main.html",
+        templateUrl: "jeopardyApp/templates/index.html",
       });
 });
 
