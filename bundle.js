@@ -10,7 +10,7 @@ angular
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        redirectTo: "/jeopardy",
+        templateUrl: "main.html",
       });
 });
 
