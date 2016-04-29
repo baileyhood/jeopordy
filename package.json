@@ -1,13 +1,12 @@
 {
   "name": "jeapordy",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run watch & ./node_modules/.bin/serve",
-    "bundle": "./node_modules/.bin/browserify --entry app.module.js -o bundle.js",
-    "watch": "./node_modules/.bin/watchify --entry app.module.js -o bundle.js"
+    "bundle": "browserify --entry app.module.js -o bundle.js",
+    "watch": "watchify --entry app.module.js -o bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +17,14 @@
   },
   "dependencies": {
     "jquery": "^2.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baileyhood/jeopordy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baileyhood/jeopordy/issues"
+  },
+  "homepage": "https://github.com/baileyhood/jeopordy#readme",
+  "description": ""
 }
