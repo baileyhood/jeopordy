@@ -11,6 +11,7 @@ angular
     $routeProvider
       .when('/',{
         templateUrl: "jeopardyApp/templates/index.html",
+        controller: 'HomeController'
       });
 });
 
