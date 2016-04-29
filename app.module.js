@@ -9,7 +9,7 @@ angular
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        templateUrl: "jeopardyApp/templates/index.html",
+        templateUrl: "jeopordy/jeopardyApp/templates/index.html",
         controller: 'HomeController'
       });
 });
