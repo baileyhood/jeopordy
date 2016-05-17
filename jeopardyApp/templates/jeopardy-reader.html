@@ -17,13 +17,13 @@
         </div>
         <div class="modal-body">
           <input type="text" class="form-control" name="name" ng-model="answerinput" placeholder = "Enter answer" value="">
-          <button type="button" name="button" ng-click="submitAnswer(answerinput, clue.answer, clue.value); disable(clue.id)"; >SUBMIT</button>
-          <!-- <p ng-show = "show" class='popup'>
+          <button type="button" name="button" ng-click="submitAnswer(answerinput, clue.answer, clue.value); disable(clue.id); showWrong()"; >SUBMIT</button>
+          <p ng-show = "showcorrect" class='popup ng-hide'>
             Correct!
           </p>
-          <p ng-show = "showwrong" class= 'popup'>
+          <p ng-show = "showwrong" class= 'popup ng-hide'>
             Wrong! The answer is <span class = 'right-answer'>{{rightAnswer}}</span>
-          </p> -->
+          </p>
         </div>
       </div>
     </div>

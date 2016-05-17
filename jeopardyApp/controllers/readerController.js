@@ -6,8 +6,11 @@ angular
 
             if (userInput === actualAnswer) {
                 $rootScope.score += value * 2;
+                $scope.showMe();
             } else {
+                $scope.showWrong();
                 $rootScope.score -= value * 2;
+
             }
         };
 
@@ -21,10 +24,11 @@ angular
            });
         };
         $scope.showMe = function() {
-            $scope.show = true;
+            $scope.showcorrect = true;
         };
 
         $scope.showWrong = function() {
             $scope.showwrong = true;
+            console.log("show wrong");
         };
     });
